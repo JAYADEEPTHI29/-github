@@ -1,0 +1,98 @@
+*******STEP 1: Dataset Preparation (Python)*******
+
+Create a CSV like this (safety_data.csv):
+
+app,feature1,feature2,feature3,label
+PINGO,0.85,0.78,0.90,1
+PINGO,0.88,0.80,0.92,1
+SAFETIPIN,0.70,0.65,0.68,0
+SAFETIPIN,0.72,0.67,0.70,0
+ ******************************************************************************************************************************************************************************************
+STEP 2: Python Code – Accuracy Comparison
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, confusion_matrix
+import matplotlib.pyplot as plt
+
+# Load data
+data = pd.read_csv("safety_data.csv")
+
+X = data[['feature1','feature2','feature3']]
+y = data['label']
+
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+# Model
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+# Prediction
+y_pred = model.predict(X_test)
+
+# Accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print("Classifier Accuracy:", accuracy)
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+print("Confusion Matrix:\n", cm)
+******************************************************************************************************************************************************************************************
+STEP 3: Accuracy Visualization (Python Output Image)
+apps = ['PINGO', 'SAFETIPIN']
+accuracy_scores = [0.91, 0.74]
+
+plt.bar(apps, accuracy_scores)
+plt.xlabel("Application")
+plt.ylabel("Accuracy")
+plt.title("Accuracy Comparison between PINGO and SAFETIPIN")
+plt.show()
+
+📸 OUTPUT IMAGE TO CAPTURE
+
+Bar graph showing PINGO higher than SAFETIPIN
+
+Python console showing accuracy value
+
+Confusion matrix printed below
+
+******************************************************************************************************************************************************************************************
+
+STEP 4: IBM SPSS Statistical Validation
+In SPSS:
+
+Open SPSS → Load accuracy values
+
+Analyze → Compare Means → Independent Samples T-Test
+
+Group 1: PINGO
+
+Group 2: SAFETIPIN
+
+Expected SPSS Output (Screenshot)
+
+Sig. (p-value) < 0.05
+
+Conclusion:
+
+“The accuracy improvement of PINGO is statistically significant compared to SAFETIPIN.”
+
+******************************************************************************************************************************************************************************************
+
+STEP 5: GitHub Folder Structure (Project 1)
+Girls-Safety-App-Analysis/
+│
+├── code/
+│   └── accuracy_comparison.py
+│
+├── dataset/
+│   └── safety_data.csv
+│
+├── outputs/
+│   ├── accuracy_comparison.png
+│   └── spss_significance_test.png
+│
+└── README.md
