@@ -1,0 +1,71 @@
+DATA CUSTOMIZATION & QUERY PERFORMANCE IN POWER BI (AR vs VR)
+📌 Tech Used
+
+Power BI
+DAX
+Unity (AR/VR integration concept)
+*****************************************************************************************************************************************************************************************
+STEP 1: Sample Dataset (CSV)
+Technology,QueryTime(ms),DataLoad(ms)
+AR,120,300
+VR,210,450
+*****************************************************************************************************************************************************************************************
+STEP 2: Power BI – DAX Measures
+Average Query Time = AVERAGE(Data[QueryTime(ms)])
+
+Average Load Time = AVERAGE(Data[DataLoad(ms)])
+*****************************************************************************************************************************************************************************************
+STEP 3: Power BI Dashboard Elements
+
+Create:
+
+📊 Bar chart → AR vs VR Query Time
+
+📈 Line chart → Data Load Performance
+
+🔢 Cards → Average Query Time
+
+⚙ Performance Analyzer enabled
+Save as: powerbi_dashboard.png
+
+*****************************************************************************************************************************************************************************************
+
+STEP 4: AR/VR Integration (Conceptual – Unity)
+using UnityEngine;
+
+public class PowerBIAR : MonoBehaviour
+{
+    public GameObject dashboard;
+
+    void Start()
+    {
+        dashboard.SetActive(true);
+    }
+}
+
+Unity scene
+
+Floating dashboard panels
+
+Label: “Power BI + AR Visualization”
+
+Save as: ar_visualization.png
+
+*****************************************************************************************************************************************************************************************
+STEP 5: GitHub Folder Structure (Project 2)
+PowerBI-AR-VR-Analytics/
+│
+├── dataset/
+│   └── performance_data.csv
+│
+├── dax/
+│   └── measures.txt
+│
+├── unity/
+│   └── PowerBIAR.cs
+│
+├── outputs/
+│   ├── powerbi_dashboard.png
+│   └── ar_visualization.png
+│
+└── README.md
